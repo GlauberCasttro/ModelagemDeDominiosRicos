@@ -2,7 +2,7 @@
 using System;
 namespace PaymentContent.Domain.Entities
 {
-    public class PagamentoPayPal : Pagamento
+    public class PagamentoPayPal : Pagamento 
     {
         public PagamentoPayPal(string codigoDaTransacao,
             DateTime dataPagamento, 
