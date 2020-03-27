@@ -1,4 +1,5 @@
-﻿using PaymentContent.Domain.ValueObjects;
+﻿using Flunt.Validations;
+using PaymentContent.Domain.ValueObjects;
 using PaymentContent.Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,17 @@ namespace PaymentContent.Domain.Entities
         public string NumeroPagamento { get; private set; }
         public DateTime DataPagamento { get; private set; }
         public DateTime DataExpiracaoPagamento { get; private set; }
-        public DateTime Total { get; private set; }
+        public decimal Total { get; private set; }
         public string Proprietario { get; private  set; }
-        public DateTime Totalpago { get; private set; }
+        public decimal Totalpago { get; private set; }
         public Endereco EnderecoCobranca { get; private set; }
         public Email Email { get; private set; }
         public Documento Documento { get; set; }
 
-        protected Pagamento(DateTime dataPagamento, 
+        public Pagamento(DateTime dataPagamento, 
             DateTime dataExpiracaoPagamento,
-            DateTime total, string proprietario,
-            DateTime totalpago,
+            decimal total, string proprietario,
+            decimal totalpago,
             Endereco enderecoCobranca, 
             Email email, 
             Documento documento)
@@ -35,6 +36,12 @@ namespace PaymentContent.Domain.Entities
             EnderecoCobranca = enderecoCobranca;
             Email = email;
             Documento = documento;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsLowerOrEqualsThan(0,Total, "Pagamento.Total", "O total nao pode ser 0")
+                .IsGreaterOrEqualsThan(Total, Totalpago, "Pagamento.Total", "O total nao pode ser 0")
+                );
         }
 
     }

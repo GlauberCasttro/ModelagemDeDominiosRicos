@@ -6,9 +6,10 @@ namespace PaymentContent.Domain.Entities
     {
         public PagamentoPayPal(string codigoDaTransacao,
             DateTime dataPagamento, 
-            DateTime dataExpiracaoPagamento, 
-            DateTime total, string proprietario,
-            DateTime totalpago,
+            DateTime dataExpiracaoPagamento,
+            decimal total, 
+            string proprietario,
+            decimal totalpago,
             Endereco enderecoCobranca,
             Email email, 
             Documento documento) 

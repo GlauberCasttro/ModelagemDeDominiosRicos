@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using PaymentContent.Shared.Entities;
 using Flunt.Notifications;
+using Flunt.Validations;
+using System;
 
 namespace PaymentContent.Domain.Entities
 {
@@ -29,11 +31,38 @@ namespace PaymentContent.Domain.Entities
             //Se já tiver um assinatura ativa, cancela a nova assinatura
             //ou
             //Cancela todas as outras e coloca a nova assinatura como principal
-            foreach (var ass in Assinaturas)
+            //foreach (var ass in Assinaturas)
+            //{
+            //    ass.Desativa();
+            //}
+            //_assinaturas.Add(assinatura);
+
+
+           
+            var TemAssinaturasAtiva = false;
+            foreach (var ass in _assinaturas)
             {
-                ass.Desativa();
+                if (ass.Ativo)
+                    TemAssinaturasAtiva = true;
             }
-            _assinaturas.Add(assinatura);
+
+            //Alternativa A para usar com Flunt Contract
+          AddNotifications(new Contract()
+                .Requires()
+                .IsFalse(TemAssinaturasAtiva, "Estudante.Assinaturas", "Você já tem uma assinatura ativa")
+                .AreNotEquals(0,assinatura.Pagamento.Count, "Estudante.Assinaturas", "Essa assinatura nao há nenhum pagamento"));
+
+
+            if (Valid)
+            {
+                _assinaturas.Add(assinatura);
+            }
+
+            //Alternativa B para nao usar o contract do Flunt
+            //if (TemAssinaturasAtiva)
+            //{
+            //    AddNotification("Estudante.Assinaturas", "Voce ja tem assinatura ativa");
+            //}
         }
 
     }

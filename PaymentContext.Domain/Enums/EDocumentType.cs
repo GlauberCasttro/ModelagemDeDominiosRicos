@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PaymentContent.Domain.ValueObjects
 {
-   public enum EDocumentFile
+   public enum EDocumentType
     {
         CPF = 1,
         CNPJ = 2

@@ -1,4 +1,5 @@
-﻿using PaymentContent.Shared.ValueObjects;
+﻿using Flunt.Validations;
+using PaymentContent.Shared.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,12 +14,28 @@ namespace PaymentContent.Domain.ValueObjects
     {
 
         public string NumeroDocumento { get; set; }
-        public EDocumentFile TipoDocumento { get; set; }
-        public Documento(string numeroDocumento, EDocumentFile tipoDocumento)
+        public EDocumentType TipoDocumento { get; set; }
+        public Documento(string numeroDocumento, EDocumentType tipoDocumento)
         {
          
             NumeroDocumento = numeroDocumento;
             TipoDocumento = tipoDocumento;
+
+            AddNotifications(new Contract()
+                .Requires()
+                .IsTrue(ValidarTipos(), "Documento.TipoDocumento","Documento invalido")
+                ) ;
+        }
+
+
+        //Não está validando os documentos, apenas para amostragem de utilização de codigo
+        private bool ValidarTipos()
+        {
+            if (TipoDocumento == EDocumentType.CNPJ && NumeroDocumento.Length == 14)
+                return true;
+            else if (TipoDocumento == EDocumentType.CPF && NumeroDocumento.Length == 11)
+                return true;
+            return false;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using PaymentContent.Shared.ValueObjects;
+﻿using Flunt.Validations;
+using PaymentContent.Shared.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,8 +15,15 @@ namespace PaymentContent.Domain.ValueObjects
             Nome = nome;
             Sobrenome = sobrenome;
 
-            if (string.IsNullOrEmpty(Nome))
-                AddNotification("NomeEstudante.Nome", "Nome invalido");
+
+            //Validacoes com flunt balta.io
+            //using Flunt.Validations;
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(Nome, 6,"Name.Nome", "Nome deve ter no minimo 6 caracteres")
+                .HasMinLen(Sobrenome, 4, "Name.Sobrenome", "Sobrenome deve ter no minimo 4 caracteres")
+
+                );
         }
 
         

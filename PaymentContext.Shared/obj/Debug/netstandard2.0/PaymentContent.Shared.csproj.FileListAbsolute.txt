@@ -1,9 +1,9 @@
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\bin\Debug\netstandard2.0\PaymentContent.Shared.deps.json
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\bin\Debug\netstandard2.0\PaymentContent.Shared.dll
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\bin\Debug\netstandard2.0\PaymentContent.Shared.pdb
-C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.csprojAssemblyReference.cache
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.AssemblyInfoInputs.cache
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.AssemblyInfo.cs
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.dll
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.pdb
 C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.csproj.CoreCompileInputs.cache
+C:\Users\grobi\OneDrive\Documentos\Projetos\PayBalta\PaymentContext.Shared\obj\Debug\netstandard2.0\PaymentContent.Shared.csprojAssemblyReference.cache
