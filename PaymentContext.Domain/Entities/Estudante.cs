@@ -45,14 +45,11 @@ namespace PaymentContent.Domain.Entities
                 if (ass.Ativo)
                     TemAssinaturasAtiva = true;
             }
-
             //Alternativa A para usar com Flunt Contract
           AddNotifications(new Contract()
                 .Requires()
                 .IsFalse(TemAssinaturasAtiva, "Estudante.Assinaturas", "Você já tem uma assinatura ativa")
                 .AreNotEquals(0,assinatura.Pagamento.Count, "Estudante.Assinaturas", "Essa assinatura nao há nenhum pagamento"));
-
-
             if (Valid)
             {
                 _assinaturas.Add(assinatura);

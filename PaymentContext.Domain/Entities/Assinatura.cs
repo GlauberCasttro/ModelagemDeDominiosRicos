@@ -9,11 +9,13 @@ namespace PaymentContent.Domain.Entities
 {
     public class Assinatura : Entity
     {
-        private IList<Pagamento> _pagamentos;
+       
         public DateTime DataCriacao { get; private set; }
         public DateTime DataUltimaAtualizacao { get; private set; }
         public DateTime? DataExpiracao { get; private set; }
         public bool Ativo { get; private set; }
+
+        private IList<Pagamento> _pagamentos;
         public IReadOnlyCollection<Pagamento> Pagamento { get  { return _pagamentos.ToArray(); } }
         public Assinatura(DateTime? dataExpiracao)
         {
@@ -28,8 +30,7 @@ namespace PaymentContent.Domain.Entities
         {
             AddNotifications(new Contract()
                 .Requires()
-                .IsGreaterThan(DateTime.Now, pagamento.DataPagamento, "Assinatura.Pagamento", "A data do pagamento nao pode ser menor que a data atual"));
-         
+                .IsGreaterThan(DateTime.Now, pagamento.DataPagamento, "Assinatura.Pagamento", "A data do pagamento nao pode ser menor que a data atual"));       
             if(Valid)
             _pagamentos.Add(pagamento);
         }
